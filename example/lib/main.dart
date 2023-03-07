@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: BSVideoPlayer(
           videoURl: 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
           hasPlayBackSpeed: true,
-          onFinishedVideo: (){}
+          onFinishedVideo: (){},
       ),
     );
   }

@@ -9,10 +9,14 @@ class ControlsOverlay extends StatelessWidget {
     required this.controller,
     required this.hasPlayBackSpeed,
     required this.finishedPlaying,
-    this.playbackFontSize = 10.0,
-    this.playbackIconSize = 100.0,
-    this.iconContainerColor = Colors.black26,
-    this.iconColor = Colors.white,
+    required this.playbackFontSize ,
+    required this.playbackIconSize ,
+    required this.iconContainerColor,
+    required this.iconColor ,
+    required this.playbackPadding ,
+    required this.playbackFontColor ,
+    required this.playbackMenuItemFontColor,
+    required this.playbackMenuItemFontSize,
   }) : super(key: key);
 
   final VideoPlayerController controller;
@@ -22,6 +26,10 @@ class ControlsOverlay extends StatelessWidget {
   final double playbackIconSize;
   final Color iconContainerColor;
   final Color iconColor;
+  final double playbackPadding;
+  final Color playbackFontColor;
+  final Color playbackMenuItemFontColor;
+  final double playbackMenuItemFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +76,19 @@ class ControlsOverlay extends StatelessWidget {
             controller.value.isPlaying ? controller.pause() : controller.play();
           },
         ),
-        hasPlayBackSpeed ? PlaybackSpeedMenu(controller: controller,playbackFontSize: 20,) : const SizedBox(),
+        hasPlayBackSpeed
+            ? PlaybackSpeedMenu(
+                controller: controller,
+            playbackFontSize: playbackFontSize,
+          playbackIconSize: playbackIconSize,
+          iconColor: iconColor,
+          playbackPadding: playbackPadding,
+          playbackFontColor: playbackFontColor,
+          playbackMenuItemFontColor: playbackMenuItemFontColor,
+          playbackMenuItemFontSize: playbackMenuItemFontSize,
+
+        )
+            : const SizedBox(),
       ],
     );
   }

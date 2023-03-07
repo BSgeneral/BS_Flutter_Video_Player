@@ -16,13 +16,13 @@ class PlaybackSpeedMenu extends StatelessWidget {
   const PlaybackSpeedMenu({
     super.key,
     required this.controller,
-    this.playbackFontSize = 10.0,
-    this.playbackIconSize = 100.0,
-    this.iconColor = Colors.black26,
-    this.playbackPadding = 20.0,
-    this.playbackFontColor = Colors.white,
-    this.playbackMenuItemFontColor = Colors.black,
-    this.playbackMenuItemFontSize = 20.0,
+    required this.playbackFontSize,
+    required this.playbackIconSize ,
+    required this.iconColor ,
+    required this.playbackPadding ,
+    required this.playbackFontColor ,
+    required this.playbackMenuItemFontColor ,
+    required this.playbackMenuItemFontSize,
   });
 
   @override
