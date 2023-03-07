@@ -9,12 +9,12 @@ class BSVideoPlayer extends StatefulWidget {
   final String videoURl;
   final bool hasPlayBackSpeed;
   final Function? onFinishedVideo;
-  final double playbackFontSize;
-  final double playbackIconSize;
+  final double playbackTextFontSize;
+  final double playbackTextIconSize;
   final Color iconContainerColor;
   final Color iconColor;
   final double playbackPadding;
-  final Color playbackFontColor;
+  final Color playbackTextFontColor;
   final Color playbackMenuItemFontColor;
   final double playbackMenuItemFontSize;
 
@@ -23,12 +23,12 @@ class BSVideoPlayer extends StatefulWidget {
     required this.videoURl,
     required this.hasPlayBackSpeed,
     required this.onFinishedVideo,
-    this.playbackFontSize = 20.0,
-    this.playbackIconSize = 100.0,
+    this.playbackTextFontSize = 20.0,
+    this.playbackTextIconSize = 100.0,
     this.iconContainerColor = Colors.black26,
     this.iconColor = Colors.white,
     this.playbackPadding = 20.0,
-    this.playbackFontColor = Colors.white,
+    this.playbackTextFontColor = Colors.white,
     this.playbackMenuItemFontColor = Colors.black,
     this.playbackMenuItemFontSize = 20.0,
   });
@@ -93,12 +93,12 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
                               controller: _controller,
                               hasPlayBackSpeed: widget.hasPlayBackSpeed,
                               finishedPlaying: hasFinishedPlaying,
-                              playbackFontSize: widget.playbackFontSize,
-                              playbackIconSize: widget.playbackIconSize,
+                              playbackTextFontSize: widget.playbackTextFontSize,
+                              playbackIconSize: widget.playbackTextIconSize,
                               iconContainerColor: widget.iconContainerColor,
                               iconColor: widget.iconColor,
-                              playbackPadding: widget.playbackPadding,
-                              playbackFontColor: widget.playbackFontColor,
+                              playbackTextPadding: widget.playbackPadding,
+                              playbackTextFontColor: widget.playbackTextFontColor,
                               playbackMenuItemFontColor: widget.playbackMenuItemFontColor,
                               playbackMenuItemFontSize: widget.playbackMenuItemFontSize,
                             ),

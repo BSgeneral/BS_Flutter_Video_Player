@@ -9,12 +9,12 @@ class ControlsOverlay extends StatelessWidget {
     required this.controller,
     required this.hasPlayBackSpeed,
     required this.finishedPlaying,
-    required this.playbackFontSize ,
-    required this.playbackIconSize ,
+    required this.playbackTextFontSize,
+    required this.playbackIconSize,
     required this.iconContainerColor,
-    required this.iconColor ,
-    required this.playbackPadding ,
-    required this.playbackFontColor ,
+    required this.iconColor,
+    required this.playbackTextPadding,
+    required this.playbackTextFontColor,
     required this.playbackMenuItemFontColor,
     required this.playbackMenuItemFontSize,
   }) : super(key: key);
@@ -22,12 +22,12 @@ class ControlsOverlay extends StatelessWidget {
   final VideoPlayerController controller;
   final bool hasPlayBackSpeed;
   final bool finishedPlaying;
-  final double playbackFontSize;
+  final double playbackTextFontSize;
   final double playbackIconSize;
   final Color iconContainerColor;
   final Color iconColor;
-  final double playbackPadding;
-  final Color playbackFontColor;
+  final double playbackTextPadding;
+  final Color playbackTextFontColor;
   final Color playbackMenuItemFontColor;
   final double playbackMenuItemFontSize;
 
@@ -79,15 +79,13 @@ class ControlsOverlay extends StatelessWidget {
         hasPlayBackSpeed
             ? PlaybackSpeedMenu(
                 controller: controller,
-            playbackFontSize: playbackFontSize,
-          playbackIconSize: playbackIconSize,
-          iconColor: iconColor,
-          playbackPadding: playbackPadding,
-          playbackFontColor: playbackFontColor,
-          playbackMenuItemFontColor: playbackMenuItemFontColor,
-          playbackMenuItemFontSize: playbackMenuItemFontSize,
-
-        )
+                playbackTextFontSize: playbackTextFontSize,
+                iconColor: iconColor,
+                playbackTextPadding: playbackTextPadding,
+                playbackTextFontColor: playbackTextFontColor,
+                playbackMenuItemFontColor: playbackMenuItemFontColor,
+                playbackMenuItemFontSize: playbackMenuItemFontSize,
+              )
             : const SizedBox(),
       ],
     );

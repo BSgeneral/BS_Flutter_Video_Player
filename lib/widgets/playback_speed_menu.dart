@@ -5,22 +5,20 @@ import '../data/player_constants.dart';
 
 class PlaybackSpeedMenu extends StatelessWidget {
   final VideoPlayerController controller;
-  final double playbackFontSize;
-  final double playbackIconSize;
+  final double playbackTextFontSize;
   final Color iconColor;
-  final double playbackPadding;
-  final Color playbackFontColor;
+  final double playbackTextPadding;
+  final Color playbackTextFontColor;
   final Color playbackMenuItemFontColor;
   final double playbackMenuItemFontSize;
 
   const PlaybackSpeedMenu({
     super.key,
     required this.controller,
-    required this.playbackFontSize,
-    required this.playbackIconSize ,
+    required this.playbackTextFontSize,
     required this.iconColor ,
-    required this.playbackPadding ,
-    required this.playbackFontColor ,
+    required this.playbackTextPadding ,
+    required this.playbackTextFontColor ,
     required this.playbackMenuItemFontColor ,
     required this.playbackMenuItemFontSize,
   });
@@ -28,7 +26,7 @@ class PlaybackSpeedMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(playbackPadding),
+      padding: EdgeInsets.all(playbackTextPadding),
       child: Align(
         alignment: Alignment.topLeft,
         child: PopupMenuButton<double>(
@@ -53,13 +51,13 @@ class PlaybackSpeedMenu extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 40,
+              vertical: 20,
               horizontal: 16,
             ),
             child: Text('${controller.value.playbackSpeed}x',
                 style: TextStyle(
-                    fontSize: playbackFontSize,
-                    color: playbackFontColor)),
+                    fontSize: playbackTextFontSize,
+                    color: playbackTextFontColor)),
           ),
         ),
       ),
