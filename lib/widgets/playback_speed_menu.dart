@@ -9,6 +9,9 @@ class PlaybackSpeedMenu extends StatelessWidget {
   final double playbackIconSize;
   final Color iconColor;
   final double playbackPadding;
+  final Color playbackFontColor;
+  final Color playbackMenuItemFontColor;
+  final double playbackMenuItemFontSize;
 
   const PlaybackSpeedMenu({
     super.key,
@@ -17,13 +20,15 @@ class PlaybackSpeedMenu extends StatelessWidget {
     this.playbackIconSize = 100.0,
     this.iconColor = Colors.black26,
     this.playbackPadding = 20.0,
-
+    this.playbackFontColor = Colors.white,
+    this.playbackMenuItemFontColor = Colors.black,
+    this.playbackMenuItemFontSize = 20.0,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:EdgeInsets.all(playbackPadding),
+      padding: EdgeInsets.all(playbackPadding),
       child: Align(
         alignment: Alignment.topLeft,
         child: PopupMenuButton<double>(
@@ -39,22 +44,22 @@ class PlaybackSpeedMenu extends StatelessWidget {
                   value: speed,
                   child: Text(
                     '${speed}x',
-                    style:
-                        TextStyle(fontSize: playbackFontSize, color: iconColor),
+                    style: TextStyle(
+                        fontSize: playbackMenuItemFontSize,
+                        color: playbackMenuItemFontColor),
                   ),
                 )
             ];
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              // Using less vertical padding as the text is also longer
-              // horizontally, so it feels like it would need more spacing
-              // horizontally (matching the aspect ratio of the video).
-              vertical: 12,
+              vertical: 40,
               horizontal: 16,
             ),
             child: Text('${controller.value.playbackSpeed}x',
-                style: TextStyle(fontSize: playbackFontSize, color: Colors.white)),
+                style: TextStyle(
+                    fontSize: playbackFontSize,
+                    color: playbackFontColor)),
           ),
         ),
       ),
