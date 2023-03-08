@@ -1,6 +1,5 @@
 import 'package:bs_video_player/widgets/playback_speed_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:video_player/video_player.dart';
 
 class ControlsOverlay extends StatelessWidget {
@@ -58,7 +57,7 @@ class ControlsOverlay extends StatelessWidget {
                   ? Container(
                       color: iconContainerColor,
                       child: Center(
-                        child: SpinKitCircle(color: iconColor),
+                        child: CircularProgressIndicator(color: iconColor),
                       ),
                     )
                   : controller.value.isPlaying

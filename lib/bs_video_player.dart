@@ -2,7 +2,6 @@ library bs_video_player;
 
 import 'package:bs_video_player/widgets/controls_overlay.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:video_player/video_player.dart';
 
 class BSVideoPlayer extends StatefulWidget {
@@ -22,7 +21,7 @@ class BSVideoPlayer extends StatefulWidget {
   final Color containerBackgroundColor;
   final Color bufferedColor;
   final Color progressColor;
-  final Color spinKitCircleColor;
+  final Color circleProgressIndicatorColor;
 
   const BSVideoPlayer({
     super.key,
@@ -42,7 +41,7 @@ class BSVideoPlayer extends StatefulWidget {
     this.containerBackgroundColor = const Color(0xFF22222B),
     this.bufferedColor = const Color(0xFFF5F5F5),
     this.progressColor = const Color(0xFF253861),
-    this.spinKitCircleColor = const  Color(0xFF253861),
+    this.circleProgressIndicatorColor = const  Color(0xFF253861),
   });
 
   @override
@@ -126,7 +125,7 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
                           ],
                         )
                       :  Center(
-                          child: SpinKitCircle(color:widget.spinKitCircleColor)),
+                          child: CircularProgressIndicator(color:widget.circleProgressIndicatorColor)),
                 ),
               ),
             ),
