@@ -17,6 +17,8 @@ class ControlsOverlay extends StatelessWidget {
     required this.playbackTextFontColor,
     required this.playbackMenuItemFontColor,
     required this.playbackMenuItemFontSize,
+    required this.playbackTextVerticalPadding,
+    required this.playbackTextHorizontalPadding,
   }) : super(key: key);
 
   final VideoPlayerController controller;
@@ -30,6 +32,8 @@ class ControlsOverlay extends StatelessWidget {
   final Color playbackTextFontColor;
   final Color playbackMenuItemFontColor;
   final double playbackMenuItemFontSize;
+  final double playbackTextVerticalPadding;
+  final double playbackTextHorizontalPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +89,8 @@ class ControlsOverlay extends StatelessWidget {
                 playbackTextFontColor: playbackTextFontColor,
                 playbackMenuItemFontColor: playbackMenuItemFontColor,
                 playbackMenuItemFontSize: playbackMenuItemFontSize,
+                playbackTextVerticalPadding: playbackTextVerticalPadding,
+                playbackTextHorizontalPadding: playbackTextHorizontalPadding,
               )
             : const SizedBox(),
       ],

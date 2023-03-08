@@ -17,6 +17,12 @@ class BSVideoPlayer extends StatefulWidget {
   final Color playbackTextFontColor;
   final Color playbackMenuItemFontColor;
   final double playbackMenuItemFontSize;
+  final double playbackTextVerticalPadding;
+  final double playbackTextHorizontalPadding;
+  final Color containerBackgroundColor;
+  final Color bufferedColor;
+  final Color progressColor;
+  final Color spinKitCircleColor;
 
   const BSVideoPlayer({
     super.key,
@@ -31,6 +37,12 @@ class BSVideoPlayer extends StatefulWidget {
     this.playbackTextFontColor = Colors.white,
     this.playbackMenuItemFontColor = Colors.black,
     this.playbackMenuItemFontSize = 20.0,
+    this.playbackTextVerticalPadding = 20.0,
+    this.playbackTextHorizontalPadding = 16.0,
+    this.containerBackgroundColor = const Color(0xFF22222B),
+    this.bufferedColor = const Color(0xFFF5F5F5),
+    this.progressColor = const Color(0xFF253861),
+    this.spinKitCircleColor = const  Color(0xFF253861),
   });
 
   @override
@@ -75,7 +87,7 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFF22222B),
+      color: widget.containerBackgroundColor,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -101,18 +113,20 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
                               playbackTextFontColor: widget.playbackTextFontColor,
                               playbackMenuItemFontColor: widget.playbackMenuItemFontColor,
                               playbackMenuItemFontSize: widget.playbackMenuItemFontSize,
+                              playbackTextVerticalPadding: widget.playbackTextVerticalPadding,
+                              playbackTextHorizontalPadding: widget.playbackTextHorizontalPadding,
                             ),
                             VideoProgressIndicator(
                               _controller,
                               allowScrubbing: true,
-                              colors: const VideoProgressColors(
-                                  bufferedColor: Color(0xFFF5F5F5),
-                                  playedColor: Color(0xFF253861)),
+                              colors: VideoProgressColors(
+                                  bufferedColor: widget.bufferedColor,
+                                  playedColor: widget.progressColor ),
                             ),
                           ],
                         )
-                      : const Center(
-                          child: SpinKitCircle(color: Color(0xFF253861))),
+                      :  Center(
+                          child: SpinKitCircle(color:widget.spinKitCircleColor)),
                 ),
               ),
             ),

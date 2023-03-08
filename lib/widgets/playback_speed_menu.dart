@@ -11,6 +11,8 @@ class PlaybackSpeedMenu extends StatelessWidget {
   final Color playbackTextFontColor;
   final Color playbackMenuItemFontColor;
   final double playbackMenuItemFontSize;
+  final double playbackTextVerticalPadding;
+  final double playbackTextHorizontalPadding;
 
   const PlaybackSpeedMenu({
     super.key,
@@ -21,6 +23,8 @@ class PlaybackSpeedMenu extends StatelessWidget {
     required this.playbackTextFontColor ,
     required this.playbackMenuItemFontColor ,
     required this.playbackMenuItemFontSize,
+    required this.playbackTextVerticalPadding,
+    required this.playbackTextHorizontalPadding,
   });
 
   @override
@@ -50,9 +54,9 @@ class PlaybackSpeedMenu extends StatelessWidget {
             ];
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 20,
-              horizontal: 16,
+            padding: EdgeInsets.symmetric(
+              vertical: playbackTextVerticalPadding,
+              horizontal: playbackTextHorizontalPadding,
             ),
             child: Text('${controller.value.playbackSpeed}x',
                 style: TextStyle(
