@@ -40,7 +40,7 @@ class BSVideoPlayer extends StatefulWidget {
     this.playbackTextHorizontalPadding = 16.0,
     this.containerBackgroundColor = const Color(0xFF22222B),
     this.bufferedColor = const Color(0xFFF5F5F5),
-    this.progressColor = const Color(0xFF253861),
+    this.progressColor = const Color(0xFF77C3EC),
     this.circleProgressIndicatorColor = const  Color(0xFF253861),
   });
 
