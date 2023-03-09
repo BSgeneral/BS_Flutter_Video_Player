@@ -6,10 +6,10 @@ class PlaybackSpeedMenu extends StatelessWidget {
     super.key,
     required this.controller,
     required this.playbackTextFontSize,
-    required this.iconColor ,
-    required this.playbackTextPadding ,
-    required this.playbackTextFontColor ,
-    required this.playbackMenuItemFontColor ,
+    required this.iconColor,
+    required this.playbackTextPadding,
+    required this.playbackTextFontColor,
+    required this.playbackMenuItemFontColor,
     required this.playbackMenuItemFontSize,
     required this.playbackTextVerticalPadding,
     required this.playbackTextHorizontalPadding,
@@ -17,15 +17,23 @@ class PlaybackSpeedMenu extends StatelessWidget {
   });
 
   final VideoPlayerController controller;
-  final double playbackTextFontSize;
-  final Color iconColor;
-  final double playbackTextPadding;
-  final Color playbackTextFontColor;
-  final Color playbackMenuItemFontColor;
-  final double playbackMenuItemFontSize;
-  final double playbackTextVerticalPadding;
-  final double playbackTextHorizontalPadding;
-  final  List<double> playbackSpeeds;
+  final double
+      playbackTextFontSize; // font size for play back speed text appear on video
+  final Color iconColor; // icon color for play, pause icons
+  final double
+      playbackTextPadding; // padding for play back speed text appear on video
+  final Color
+      playbackTextFontColor; // font color for play back speed text appear on video
+  final Color
+      playbackMenuItemFontColor; // font color for play back speed menu text
+  final double
+      playbackMenuItemFontSize; // font size for play back speed menu text
+  final double
+      playbackTextVerticalPadding; // vertical padding for play back speed text appear on video
+  final double
+      playbackTextHorizontalPadding; // horizontal padding for play back speed text appear on video
+  final List<double>
+      playbackSpeeds; // playback speeds to be displayed in the menu
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +42,18 @@ class PlaybackSpeedMenu extends StatelessWidget {
       child: Align(
         alignment: Alignment.topLeft,
         child: PopupMenuButton<double>(
-          initialValue: controller.value.playbackSpeed, // playback speed menu
+          initialValue: controller.value.playbackSpeed,
+          // set the current playback speed as the initial value for the menu
           tooltip: 'Playback speed',
+          // tooltip for the menu button
           onSelected: (double speed) {
-            controller.setPlaybackSpeed(speed);
+            // when a playback speed menu item is selected
+            controller
+                .setPlaybackSpeed(speed); // set the selected playback speed
           },
           itemBuilder: (BuildContext context) {
-            return <PopupMenuItem<double>>[  // play back speed menu items
+            return <PopupMenuItem<double>>[
+              // create a playback speed menu item for each value in playbackSpeeds list
               for (final double speed in playbackSpeeds)
                 PopupMenuItem<double>(
                   value: speed,
@@ -54,11 +67,13 @@ class PlaybackSpeedMenu extends StatelessWidget {
             ];
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(  //padding for playback speed appear on video
+            padding: EdgeInsets.symmetric(
+              //padding for playback speed appear on video
               vertical: playbackTextVerticalPadding,
               horizontal: playbackTextHorizontalPadding,
             ),
-            child: Text('${controller.value.playbackSpeed}x', //playback speed text appear on video
+            child: Text('${controller.value.playbackSpeed}x',
+                // display the current playback speed
                 style: TextStyle(
                     fontSize: playbackTextFontSize,
                     color: playbackTextFontColor)),

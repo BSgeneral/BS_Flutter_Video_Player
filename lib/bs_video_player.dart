@@ -66,16 +66,22 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
   @override
   void initState() {
     super.initState();
+    // create a new VideoPlayerController to control the video playback
     _controller = VideoPlayerController.network(
       widget.videoURl,
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     );
 
+    // Add a listener to the VideoPlayerController to update the state
+    // of the widget when the video playback state changes
+
     _controller.addListener(() {
       setState(() {});
+      // Check if the video has finished playing
       if (_controller.value.duration <= _controller.value.position) {
         setState(() {
           hasFinishedPlaying = true;
+          // Call the onFinishedVideo callback function if it is provided
           if (widget.onFinishedVideo != null) {
             widget.onFinishedVideo!();
           }
@@ -85,11 +91,13 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
       }
     });
 
+    // Initialize the VideoPlayerController
     _controller.initialize();
   }
 
   @override
   void dispose() {
+    // Dispose of the VideoPlayerController when the widget is disposed
     _controller.dispose();
     super.dispose();
   }
@@ -148,8 +156,8 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
                               _controller,
                               allowScrubbing: true,
                               colors: VideoProgressColors(
-                                bufferedColor: widget
-                                    .bufferedColor, // progress indicator buffered color
+                                bufferedColor: widget.bufferedColor,
+                                // progress indicator buffered color
                                 playedColor: widget
                                     .progressColor, // progress indicator progress color
                               ),
