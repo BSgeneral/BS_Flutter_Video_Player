@@ -148,7 +148,8 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
                               _controller,
                               allowScrubbing: true,
                               colors: VideoProgressColors(
-                                bufferedColor: widget.bufferedColor, // progress indicator buffered color
+                                bufferedColor: widget
+                                    .bufferedColor, // progress indicator buffered color
                                 playedColor: widget
                                     .progressColor, // progress indicator progress color
                               ),
