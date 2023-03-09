@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-import '../data/player_constants.dart';
-
 class PlaybackSpeedMenu extends StatelessWidget {
-  final VideoPlayerController controller;
-  final double playbackTextFontSize;
-  final Color iconColor;
-  final double playbackTextPadding;
-  final Color playbackTextFontColor;
-  final Color playbackMenuItemFontColor;
-  final double playbackMenuItemFontSize;
-  final double playbackTextVerticalPadding;
-  final double playbackTextHorizontalPadding;
-
   const PlaybackSpeedMenu({
     super.key,
     required this.controller,
@@ -25,7 +13,19 @@ class PlaybackSpeedMenu extends StatelessWidget {
     required this.playbackMenuItemFontSize,
     required this.playbackTextVerticalPadding,
     required this.playbackTextHorizontalPadding,
+    required this.playbackSpeeds,
   });
+
+  final VideoPlayerController controller;
+  final double playbackTextFontSize;
+  final Color iconColor;
+  final double playbackTextPadding;
+  final Color playbackTextFontColor;
+  final Color playbackMenuItemFontColor;
+  final double playbackMenuItemFontSize;
+  final double playbackTextVerticalPadding;
+  final double playbackTextHorizontalPadding;
+  final  List<double> playbackSpeeds;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class PlaybackSpeedMenu extends StatelessWidget {
           },
           itemBuilder: (BuildContext context) {
             return <PopupMenuItem<double>>[
-              for (final double speed in PlayerConstants.playbackSpeeds)
+              for (final double speed in playbackSpeeds)
                 PopupMenuItem<double>(
                   value: speed,
                   child: Text(

@@ -5,24 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class BSVideoPlayer extends StatefulWidget {
-  final String videoURl;
-  final bool hasPlayBackSpeed;
-  final Function? onFinishedVideo;
-  final double playbackTextFontSize;
-  final double playbackTextIconSize;
-  final Color iconContainerColor;
-  final Color iconColor;
-  final double playbackPadding;
-  final Color playbackTextFontColor;
-  final Color playbackMenuItemFontColor;
-  final double playbackMenuItemFontSize;
-  final double playbackTextVerticalPadding;
-  final double playbackTextHorizontalPadding;
-  final Color containerBackgroundColor;
-  final Color bufferedColor;
-  final Color progressColor;
-  final Color circleProgressIndicatorColor;
-
   const BSVideoPlayer({
     super.key,
     required this.videoURl,
@@ -41,8 +23,37 @@ class BSVideoPlayer extends StatefulWidget {
     this.containerBackgroundColor = const Color(0xFF22222B),
     this.bufferedColor = const Color(0xFFF5F5F5),
     this.progressColor = const Color(0xFF77C3EC),
-    this.circleProgressIndicatorColor = const  Color(0xFF253861),
+    this.circleProgressIndicatorColor = const Color(0xFF253861),
+    this.playbackSpeeds = const <double>[
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0
+    ],
   });
+
+  final String videoURl;
+  final bool hasPlayBackSpeed;
+  final Function? onFinishedVideo;
+  final double playbackTextFontSize;
+  final double playbackTextIconSize;
+  final Color iconContainerColor;
+  final Color iconColor;
+  final double playbackPadding;
+  final Color playbackTextFontColor;
+  final Color playbackMenuItemFontColor;
+  final double playbackMenuItemFontSize;
+  final double playbackTextVerticalPadding;
+  final double playbackTextHorizontalPadding;
+  final Color containerBackgroundColor;
+  final Color bufferedColor;
+  final Color progressColor;
+  final Color circleProgressIndicatorColor;
+  final List<double> playbackSpeeds;
 
   @override
   State<BSVideoPlayer> createState() => _BSVideoPlayerState();
@@ -109,23 +120,31 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
                               iconContainerColor: widget.iconContainerColor,
                               iconColor: widget.iconColor,
                               playbackTextPadding: widget.playbackPadding,
-                              playbackTextFontColor: widget.playbackTextFontColor,
-                              playbackMenuItemFontColor: widget.playbackMenuItemFontColor,
-                              playbackMenuItemFontSize: widget.playbackMenuItemFontSize,
-                              playbackTextVerticalPadding: widget.playbackTextVerticalPadding,
-                              playbackTextHorizontalPadding: widget.playbackTextHorizontalPadding,
+                              playbackTextFontColor:
+                                  widget.playbackTextFontColor,
+                              playbackMenuItemFontColor:
+                                  widget.playbackMenuItemFontColor,
+                              playbackMenuItemFontSize:
+                                  widget.playbackMenuItemFontSize,
+                              playbackTextVerticalPadding:
+                                  widget.playbackTextVerticalPadding,
+                              playbackTextHorizontalPadding:
+                                  widget.playbackTextHorizontalPadding,
+                              playbackSpeeds: widget.playbackSpeeds,
                             ),
                             VideoProgressIndicator(
                               _controller,
                               allowScrubbing: true,
                               colors: VideoProgressColors(
-                                  bufferedColor: widget.bufferedColor,
-                                  playedColor: widget.progressColor ),
+                                bufferedColor: widget.bufferedColor,
+                                playedColor: widget.progressColor,
+                              ),
                             ),
                           ],
                         )
-                      :  Center(
-                          child: CircularProgressIndicator(color:widget.circleProgressIndicatorColor)),
+                      : Center(
+                          child: CircularProgressIndicator(
+                              color: widget.circleProgressIndicatorColor)),
                 ),
               ),
             ),
