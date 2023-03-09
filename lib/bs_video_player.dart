@@ -11,7 +11,7 @@ class BSVideoPlayer extends StatefulWidget {
     required this.hasPlayBackSpeed,
     required this.onFinishedVideo,
     this.playbackTextFontSize = 20.0,
-    this.playbackTextIconSize = 100.0,
+    this.playbackIconSize = 100.0,
     this.iconContainerColor = Colors.black26,
     this.iconColor = Colors.white,
     this.playbackPadding = 20.0,
@@ -40,7 +40,7 @@ class BSVideoPlayer extends StatefulWidget {
   final bool hasPlayBackSpeed;
   final Function? onFinishedVideo;
   final double playbackTextFontSize;
-  final double playbackTextIconSize;
+  final double playbackIconSize;
   final Color iconContainerColor;
   final Color iconColor;
   final double playbackPadding;
@@ -114,37 +114,51 @@ class _BSVideoPlayerState extends State<BSVideoPlayer> {
                             ControlsOverlay(
                               controller: _controller,
                               hasPlayBackSpeed: widget.hasPlayBackSpeed,
+                              // permission to show playback speed on video screen
                               finishedPlaying: hasFinishedPlaying,
                               playbackTextFontSize: widget.playbackTextFontSize,
-                              playbackIconSize: widget.playbackTextIconSize,
+                              // font size for play back speed text appear on video
+                              playbackIconSize: widget.playbackIconSize,
+                              // play, pause icon size
                               iconContainerColor: widget.iconContainerColor,
+                              // play, pause icon container size
                               iconColor: widget.iconColor,
+                              // play, pause icon color
                               playbackTextPadding: widget.playbackPadding,
+                              // padding for play back speed text appear on video
                               playbackTextFontColor:
                                   widget.playbackTextFontColor,
+                              // font size for play back speed text appear on video
                               playbackMenuItemFontColor:
                                   widget.playbackMenuItemFontColor,
+                              // font color for play back speed menu item text
                               playbackMenuItemFontSize:
                                   widget.playbackMenuItemFontSize,
+                              // font size for play back speed menu item text
                               playbackTextVerticalPadding:
                                   widget.playbackTextVerticalPadding,
+                              // vertical padding for play back speed text appear on video
                               playbackTextHorizontalPadding:
                                   widget.playbackTextHorizontalPadding,
-                              playbackSpeeds: widget.playbackSpeeds,
+                              // horizontal padding for play back speed text appear on video
+                              playbackSpeeds: widget
+                                  .playbackSpeeds, // playback speeds to be displayed
                             ),
                             VideoProgressIndicator(
                               _controller,
                               allowScrubbing: true,
                               colors: VideoProgressColors(
-                                bufferedColor: widget.bufferedColor,
-                                playedColor: widget.progressColor,
+                                bufferedColor: widget.bufferedColor, // progress indicator buffered color
+                                playedColor: widget
+                                    .progressColor, // progress indicator progress color
                               ),
                             ),
                           ],
                         )
                       : Center(
                           child: CircularProgressIndicator(
-                              color: widget.circleProgressIndicatorColor)),
+                              color: widget.circleProgressIndicatorColor),
+                        ),
                 ),
               ),
             ),

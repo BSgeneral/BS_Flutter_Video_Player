@@ -81,18 +81,18 @@ class ControlsOverlay extends StatelessWidget {
             controller.value.isPlaying ? controller.pause() : controller.play();
           },
         ),
-        hasPlayBackSpeed
+        hasPlayBackSpeed  // if we want to allow playback speed control
             ? PlaybackSpeedMenu(
                 controller: controller,
-                playbackTextFontSize: playbackTextFontSize,
-                iconColor: iconColor,
-                playbackTextPadding: playbackTextPadding,
-                playbackTextFontColor: playbackTextFontColor,
-                playbackMenuItemFontColor: playbackMenuItemFontColor,
-                playbackMenuItemFontSize: playbackMenuItemFontSize,
-                playbackTextVerticalPadding: playbackTextVerticalPadding,
-                playbackTextHorizontalPadding: playbackTextHorizontalPadding,
-                playbackSpeeds: playbackSpeeds,
+                playbackTextFontSize: playbackTextFontSize, // font size for play back speed text appear on video
+                iconColor: iconColor, // icon color for play, pause icons
+                playbackTextPadding: playbackTextPadding, // padding for play back speed text appear on video
+                playbackTextFontColor: playbackTextFontColor, // font color for play back speed text appear on video
+                playbackMenuItemFontColor: playbackMenuItemFontColor, // font color for play back speed menu text
+                playbackMenuItemFontSize: playbackMenuItemFontSize, // font size for play back speed menu text
+                playbackTextVerticalPadding: playbackTextVerticalPadding, // vertical padding for play back speed text appear on video
+                playbackTextHorizontalPadding: playbackTextHorizontalPadding, // horizontal padding for play back speed text appear on video
+                playbackSpeeds: playbackSpeeds, // playback speeds to be displayed
               )
             : const SizedBox(),
       ],

@@ -34,13 +34,13 @@ class PlaybackSpeedMenu extends StatelessWidget {
       child: Align(
         alignment: Alignment.topLeft,
         child: PopupMenuButton<double>(
-          initialValue: controller.value.playbackSpeed,
+          initialValue: controller.value.playbackSpeed, // playback speed menu
           tooltip: 'Playback speed',
           onSelected: (double speed) {
             controller.setPlaybackSpeed(speed);
           },
           itemBuilder: (BuildContext context) {
-            return <PopupMenuItem<double>>[
+            return <PopupMenuItem<double>>[  // play back speed menu items
               for (final double speed in playbackSpeeds)
                 PopupMenuItem<double>(
                   value: speed,
@@ -54,11 +54,11 @@ class PlaybackSpeedMenu extends StatelessWidget {
             ];
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(  //padding for playback speed appear on video
               vertical: playbackTextVerticalPadding,
               horizontal: playbackTextHorizontalPadding,
             ),
-            child: Text('${controller.value.playbackSpeed}x',
+            child: Text('${controller.value.playbackSpeed}x', //playback speed text appear on video
                 style: TextStyle(
                     fontSize: playbackTextFontSize,
                     color: playbackTextFontColor)),
