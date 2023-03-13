@@ -1,4 +1,4 @@
-import 'package:bs_reusable_widgets/widgets/playback_speed_menu.dart';
+import 'package:bs_reusable_widgets/video_player/playback_speed_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 

@@ -1,4 +1,5 @@
-import 'package:bs_reusable_widgets/bs_video_player.dart';
+import 'package:bs_reusable_widgets/app_bars/step_progress_app_bar.dart';
+import 'package:bs_reusable_widgets/video_player/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,9 +25,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key,});
-
-
+  const MyHomePage({
+    super.key,
+  });
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -40,14 +41,25 @@ class _MyHomePageState extends State<MyHomePage> {
       DeviceOrientation.landscapeRight,
     ]);
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: BSVideoPlayer(
-          videoURl: 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-          hasPlayBackSpeed: true,
-          onFinishedVideo: (){},
+      body: Column(
+        children: [
+          BSVideoPlayer(
+            videoURl:
+                'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+            hasPlayBackSpeed: true,
+            onFinishedVideo: () {},
+          ),
+          const StepProgressAppBar(
+              title: 'title',
+              subTitle: 'subTitle',
+              totalSteps: 3,
+              currentStep: 1,
+              progressText: 'progress'),
+        ],
       ),
     );
   }
