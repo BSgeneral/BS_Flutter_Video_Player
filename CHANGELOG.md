@@ -1,3 +1,7 @@
+## 0.3.0
+
+* new version with more widgets added.
+
 ## 0.2.3
 
 * app bars added.

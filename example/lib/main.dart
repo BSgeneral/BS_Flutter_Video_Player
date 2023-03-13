@@ -1,7 +1,9 @@
-import 'package:bs_reusable_widgets/app_bars/step_progress_app_bar.dart';
-import 'package:bs_reusable_widgets/video_player/video_player.dart';
+import 'package:bs_reusable_widgets/buttons/rounded_button_with_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'feature/app_bars.dart';
+import 'feature/video_player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,28 +40,49 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
+      DeviceOrientation.portraitUp,
     ]);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          BSVideoPlayer(
-            videoURl:
-                'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-            hasPlayBackSpeed: true,
-            onFinishedVideo: () {},
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              RoundedBorderButton(
+                btnTitle: 'See App Bars',
+                onPress: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AppBars()),
+                  );
+                },
+                bgColor: const Color(0xFF253861),
+                textColor: Colors.white,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              RoundedBorderButton(
+                btnTitle: 'See Video Player',
+                onPress: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const VideoPlayer()),
+                  );
+                },
+                bgColor: const Color(0xFF253861),
+                textColor: Colors.white,
+              ),
+            ],
           ),
-          const StepProgressAppBar(
-              title: 'title',
-              subTitle: 'subTitle',
-              totalSteps: 3,
-              currentStep: 1,
-              progressText: 'progress'),
-        ],
+        ),
       ),
     );
   }
