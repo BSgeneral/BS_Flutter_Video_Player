@@ -1,6 +1,6 @@
 library bs_video_player;
 
-import 'package:bs_video_player/widgets/controls_overlay.dart';
+import 'package:bs_reusable_widgets/widgets/controls_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 

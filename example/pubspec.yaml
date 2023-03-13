@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  bs_video_player:
+  bs_reusable_widgets:
     path: ../
 
 
