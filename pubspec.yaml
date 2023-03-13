@@ -1,6 +1,6 @@
-name: bs_video_player
+name: bs_reusable_widgets
 description: This plugin provides a customisable video player widget that can be used to display video content in a Flutter app.
-version: 0.2.1
+version: 0.2.2
 homepage: https://pub.dev/packages/bs_video_player
 
 environment:

@@ -1,3 +1,7 @@
+## 0.2.2
+
+* Package name changed.
+
 ## 0.2.0
 
 * Code formatting and more customisations added.
