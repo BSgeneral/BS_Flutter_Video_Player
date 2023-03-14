@@ -1,3 +1,7 @@
+## 0.3.1
+
+* remaining buttons added.
+
 ## 0.3.0
 
 * new version with more widgets added.
