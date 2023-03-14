@@ -11,3 +11,7 @@ export 'app_bars/title_back_arrow_app_bar.dart';
 
 //buttons
 export 'buttons/rounded_button_with_border.dart';
+export 'buttons/circular_button.dart';
+export 'buttons/rounded_button.dart';
+export 'buttons/rounded_button_with_icon.dart';
+export 'buttons/rounded_close_button.dart';
