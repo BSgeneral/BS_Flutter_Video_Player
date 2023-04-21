@@ -1,3 +1,6 @@
+## 0.3.2
+* new version of video player and package updates added.
+
 ## 0.3.1
 
 * remaining buttons added.
