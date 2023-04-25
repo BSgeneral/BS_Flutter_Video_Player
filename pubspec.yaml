@@ -1,6 +1,6 @@
 name: bs_reusable_widgets
 description: This plugin provides re useble widgets to be used in similar apps developed by bs team.
-version: 0.3.2
+version: 0.3.3
 homepage: https://pub.dev/packages/bs_video_player
 
 environment:

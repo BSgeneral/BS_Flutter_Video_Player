@@ -11,8 +11,6 @@ class AppBars extends StatelessWidget {
         body: CustomScrollView(
       slivers: [
         const StepProgressAppBar(
-            title: 'Step Progress Title',
-            subTitle: 'Sub Title',
             totalSteps: 3,
             currentStep: 1,
             progressText: 'Progress Text'),

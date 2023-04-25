@@ -1,4 +1,7 @@
 ## 0.3.2
+* new version of step progress app bar added.
+
+## 0.3.2
 * new version of video player and package updates added.
 
 ## 0.3.1
