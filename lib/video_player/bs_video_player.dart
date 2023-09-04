@@ -4,51 +4,48 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:video_player/video_player.dart';
 
 class BrainSafeVideoPlayer extends StatefulWidget {
-  final String videoURl;
+  final VideoPlayerController videoController;
   final bool hasPlayBackSpeed;
   final Function? onFinishedVideo;
 
   const BrainSafeVideoPlayer(
-      {super.key, required this.videoURl,
-        required this.hasPlayBackSpeed,
-        this.onFinishedVideo});
+      {super.key,
+      required this.videoController,
+      required this.hasPlayBackSpeed,
+      this.onFinishedVideo});
 
   @override
   _BrainSafeVideoPlayerState createState() => _BrainSafeVideoPlayerState();
 }
 
 class _BrainSafeVideoPlayerState extends State<BrainSafeVideoPlayer> {
-  late VideoPlayerController _controller;
   bool hasFinishedPlaying = false;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-      widget.videoURl,
-      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-    );
 
-    _controller.addListener(() {
+    widget.videoController.addListener(() {
       setState(() {});
-      if (_controller.value.duration <= _controller.value.position) {
+      if (widget.videoController.value.duration <=
+          widget.videoController.value.position) {
         setState(() {
           hasFinishedPlaying = true;
           if (widget.onFinishedVideo != null) {
             widget.onFinishedVideo!();
           }
         });
-      } else if (_controller.value.isPlaying) {
+      } else if (widget.videoController.value.isPlaying) {
         hasFinishedPlaying = false;
       }
     });
 
-    _controller.initialize();
+    widget.videoController.initialize();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    widget.videoController.dispose();
     super.dispose();
   }
 
@@ -63,26 +60,27 @@ class _BrainSafeVideoPlayerState extends State<BrainSafeVideoPlayer> {
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 child: AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: _controller.value.isInitialized
+                  aspectRatio: widget.videoController.value.aspectRatio,
+                  child: widget.videoController.value.isInitialized
                       ? Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: <Widget>[
-                      VideoPlayer(_controller),
-                      _ControlsOverlay(
-                          controller: _controller,
-                          hasPlayBackSpeed: widget.hasPlayBackSpeed,
-                          finishedPlaying: hasFinishedPlaying),
-                      VideoProgressIndicator(
-                        _controller,
-                        allowScrubbing: true,
-                        colors: const VideoProgressColors(
-                            bufferedColor:  Color(0xFFF5F5F5),
-                            playedColor:  Color(0xFF253861)),
-                      ),
-                    ],
-                  )
-                      : const Center(child: SpinKitCircle(color:Color(0xFF253861))),
+                          alignment: Alignment.bottomCenter,
+                          children: <Widget>[
+                            VideoPlayer(widget.videoController),
+                            _ControlsOverlay(
+                                controller: widget.videoController,
+                                hasPlayBackSpeed: widget.hasPlayBackSpeed,
+                                finishedPlaying: hasFinishedPlaying),
+                            VideoProgressIndicator(
+                              widget.videoController,
+                              allowScrubbing: true,
+                              colors: const VideoProgressColors(
+                                  bufferedColor: Color(0xFFF5F5F5),
+                                  playedColor: Color(0xFF253861)),
+                            ),
+                          ],
+                        )
+                      : const Center(
+                          child: SpinKitCircle(color: Color(0xFF253861))),
                 ),
               ),
             ),
@@ -96,9 +94,9 @@ class _BrainSafeVideoPlayerState extends State<BrainSafeVideoPlayer> {
 class _ControlsOverlay extends StatelessWidget {
   const _ControlsOverlay(
       {Key? key,
-        required this.controller,
-        required this.hasPlayBackSpeed,
-        required this.finishedPlaying})
+      required this.controller,
+      required this.hasPlayBackSpeed,
+      required this.finishedPlaying})
       : super(key: key);
 
   static const List<double> _examplePlaybackRates = <double>[
@@ -128,36 +126,36 @@ class _ControlsOverlay extends StatelessWidget {
           reverseDuration: const Duration(milliseconds: 200),
           child: finishedPlaying
               ? Container(
-            color: Colors.black26,
-            child: const Center(
-              child: Icon(
-                Icons.replay,
-                color: Colors.white,
-                size: 100.0,
-                semanticLabel: 'RePlay',
-              ),
-            ),
-          )
+                  color: Colors.black26,
+                  child: const Center(
+                    child: Icon(
+                      Icons.replay,
+                      color: Colors.white,
+                      size: 100.0,
+                      semanticLabel: 'RePlay',
+                    ),
+                  ),
+                )
               : controller.value.isBuffering
-              ? Container(
-            color: Colors.black26,
-            child: const Center(
-              child: SpinKitCircle(color: Color(0xFFFFFFFF)),
-            ),
-          )
-              : controller.value.isPlaying
-              ? const SizedBox.shrink()
-              : Container(
-            color: Colors.black26,
-            child: const Center(
-              child: Icon(
-                Icons.play_arrow,
-                color: Colors.white,
-                size: 100.0,
-                semanticLabel: 'Play',
-              ),
-            ),
-          ),
+                  ? Container(
+                      color: Colors.black26,
+                      child: const Center(
+                        child: SpinKitCircle(color: Color(0xFFFFFFFF)),
+                      ),
+                    )
+                  : controller.value.isPlaying
+                      ? const SizedBox.shrink()
+                      : Container(
+                          color: Colors.black26,
+                          child: const Center(
+                            child: Icon(
+                              Icons.play_arrow,
+                              color: Colors.white,
+                              size: 100.0,
+                              semanticLabel: 'Play',
+                            ),
+                          ),
+                        ),
         ),
         GestureDetector(
           onTap: () {
@@ -166,39 +164,39 @@ class _ControlsOverlay extends StatelessWidget {
         ),
         hasPlayBackSpeed
             ? Container(
-          padding: EdgeInsets.all(10.w),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: PopupMenuButton<double>(
-              initialValue: controller.value.playbackSpeed,
-              tooltip: 'Playback speed',
-              onSelected: (double speed) {
-                controller.setPlaybackSpeed(speed);
-              },
-              itemBuilder: (BuildContext context) {
-                return <PopupMenuItem<double>>[
-                  for (final double speed in _examplePlaybackRates)
-                    PopupMenuItem<double>(
-                      value: speed,
-                      child: Text('${speed}x'),
-                    )
-                ];
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  // Using less vertical padding as the text is also longer
-                  // horizontally, so it feels like it would need more spacing
-                  // horizontally (matching the aspect ratio of the video).
-                  vertical: 12,
-                  horizontal: 16,
+                padding: EdgeInsets.all(10.w),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: PopupMenuButton<double>(
+                    initialValue: controller.value.playbackSpeed,
+                    tooltip: 'Playback speed',
+                    onSelected: (double speed) {
+                      controller.setPlaybackSpeed(speed);
+                    },
+                    itemBuilder: (BuildContext context) {
+                      return <PopupMenuItem<double>>[
+                        for (final double speed in _examplePlaybackRates)
+                          PopupMenuItem<double>(
+                            value: speed,
+                            child: Text('${speed}x'),
+                          )
+                      ];
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        // Using less vertical padding as the text is also longer
+                        // horizontally, so it feels like it would need more spacing
+                        // horizontally (matching the aspect ratio of the video).
+                        vertical: 12,
+                        horizontal: 16,
+                      ),
+                      child: Text('${controller.value.playbackSpeed}x',
+                          style: const TextStyle(
+                              fontSize: 18.0, color: Colors.white)),
+                    ),
+                  ),
                 ),
-                child: Text('${controller.value.playbackSpeed}x',
-                    style:
-                    const TextStyle(fontSize: 18.0, color: Colors.white)),
-              ),
-            ),
-          ),
-        )
+              )
             : const SizedBox(),
       ],
     );
